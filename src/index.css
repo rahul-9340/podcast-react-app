@@ -37,8 +37,6 @@ input{
   margin-top: 2rem;
   text-align: center;
 }
-
-
 .podcast-flex{
   display: flex;
   justify-content: center;
@@ -49,6 +47,7 @@ input{
 
 a{
   text-decoration: none;
+  color:var(--purple-grey);
 }
 
 .podcast-title-heading{
@@ -91,5 +90,23 @@ background:linear-gradient(
   margin-bottom: 30px;
 }
 
+.profile-div{
+ font-weight: 600;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dp-div{
+  height: 50px;
+  width: 50px;
+  background-color: aliceblue;
+  border-radius: 50%;
+}
 
-
+.dp-div>img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}

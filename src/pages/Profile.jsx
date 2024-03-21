@@ -9,8 +9,8 @@ import Loader from '../components/common/Loader'
 
 export default function Profile() {
 const user = useSelector((state=>state.user.user))
-  console.log("MY user",user)
-    
+console.log("MY user",user)
+
   if(!user){
     return <Loader/>
   }
@@ -27,10 +27,14 @@ toast.error(error.message)
   return (
     <div>
         <Header/>
-        <h1>{user.name}</h1>
-        <h1>{user.email}</h1>
-        <h1>{user.uid}</h1>
-        <Button text={"Logout"} onClick={handleLogout}/>
+        <div className='profile-div'>
+        <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
+         <div className='dp-div'><img src={user.profilePic}/></div>
+         <p>{user.name}</p>
+         </div>
+        <p>{user.email}</p>
+        <Button width={"20%"} text={"Logout"} onClick={handleLogout}/>
+        </div>
     </div>
   )
 }

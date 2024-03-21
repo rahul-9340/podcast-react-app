@@ -12,18 +12,17 @@ import { addDoc, collection } from 'firebase/firestore'
 
 export default function CreateAnEpisodePage() {
   
-    const {id} = useParams()
-  
-    const[title,setTitle]= useState("")
+  const {id} = useParams()
+  const[title,setTitle]= useState("")
   const[desc,setDesc] = useState("")
   const[audioFile,setAudioFile] = useState("")
   const[loading,setLoading] = useState(false)
   const navigate = useNavigate()
-   const dispatch = useDispatch()
+  const dispatch = useDispatch()
   
-   const audioFileHandle = (file)=>{
+const audioFileHandle = (file)=>{
 setAudioFile(file)
-   }
+}
   
 const handleSubmit = async()=>{
 setLoading(true)
@@ -33,11 +32,8 @@ const audioRef = ref(
     storage,
     `podcast-episodes/${auth.currentUser.uid}/${Date.now()}`
 );
-
 await uploadBytes(audioRef,audioFile)
-
 const audioURL = await getDownloadURL(audioRef)
-
 const episodeData = {
   title:title,
   description:desc,
@@ -47,6 +43,7 @@ const episodeData = {
 await addDoc(collection(db,"podcast",id,"episodes"),
   episodeData 
 )
+
 
 toast.success("Episode created Successfully")
 navigate(`/podcast/${id}`);
@@ -68,7 +65,8 @@ setLoading(false)
     toast.error("All files should be there")
 }
 }
-
+ 
+ 
     return (
     <div>
         <Header/>
@@ -89,15 +87,14 @@ setLoading(false)
     reqired={true}   
     />   
      <FileInput accept={"audio/*"} id={"audio-file-input"}
-    fileHandleFn={audioFileHandle}
-    text={"audio file uploded"}
+     fileHandleFn={audioFileHandle}
+     text={"audio file uploded"}
     /> 
      <Button text={loading?"Loading..":"Create Podcast"}
      disabled={loading} 
      onClick={handleSubmit} />     
         
-        
-        </div>
+    </div>
     </div>
   )
 }

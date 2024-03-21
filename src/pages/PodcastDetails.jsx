@@ -15,11 +15,15 @@ export default function PodcastDetails() {
   const [episodes, setEpisodes] = useState([]);
   const[playingFile,setPlayingFile] = useState("")
 
-  useEffect(() => {
+  useEffect(()=>{
     if (id) {
       getData();
     }
-  }, [id]);
+  },[id]);
+
+
+
+  
 
   const getData = async () => {
     try {
@@ -36,6 +40,7 @@ export default function PodcastDetails() {
       toast.error(e.message);
     }
   };
+
   useEffect(() => {
     const unSubscribe = onSnapshot(
       query(collection(db, "podcast", id, "episodes")),
@@ -68,7 +73,7 @@ export default function PodcastDetails() {
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent:"space-between",
                 alignItems: "center",
                 width: "100%",
               }}

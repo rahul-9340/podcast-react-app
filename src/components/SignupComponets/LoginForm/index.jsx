@@ -27,7 +27,7 @@ const handleLogin = async()=>{
     try{
     const userCredential = await signInWithEmailAndPassword(auth,email,password)
     const user = userCredential.user
-
+     
     const userDoc = await getDoc(doc(db,"users",user.uid))
     const userData = userDoc.data()
     console.log(userData)
@@ -53,8 +53,7 @@ setLoading(false)
 toast.error("email and password are not empty")
 }
 } 
-
-    return (
+return(
     <> 
     <InputComponent  
     state={email}   
@@ -75,6 +74,7 @@ toast.error("email and password are not empty")
     </>
   )
 }
+
 
 
 

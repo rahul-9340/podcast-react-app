@@ -7,8 +7,9 @@ import { db } from '../firebase'
 import PodcastCard from '../components/common/Podcast/PodcastCard'
 import { setPodcast } from '../slice.js/podcastSlice'
 import InputComponent from '../components/common/input'
+import { auth } from '../firebase'
 export default function PodcastPage() {
- 
+ const userId = auth.currentUser.uid
  const dispatch = useDispatch()
  const podcasts = useSelector((state)=>state.podcasts.podcasts)
  const[search,setSearch]= useState("")
@@ -16,9 +17,13 @@ export default function PodcastPage() {
 const unsubscribe = onSnapshot(
     query(collection(db,"podcast")),
     (querySnapshot)=>{
-     const podcastData = []
+     const podcastData=[]
      querySnapshot.forEach((doc)=>{
+      // console.log(doc.data().createdBy)
+      // console.log(userId)
+      if(doc.data().createdBy==userId){
         podcastData.push({id:doc.id,...doc.data()})
+      } 
      });
      dispatch(setPodcast(podcastData))
     },
@@ -31,7 +36,8 @@ return ()=>{
 }
  },[dispatch])
 
-var filterPodcasts = podcasts.filter((items)=>items.title.trim().toLowerCase().includes(search.toLocaleLowerCase()))
+
+ var filterPodcasts = podcasts.filter((items)=>items.title.trim().toLowerCase().includes(search.toLocaleLowerCase()))
 
    return (
     <div>
