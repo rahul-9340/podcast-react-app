@@ -86,9 +86,6 @@ background:linear-gradient(
 ::-webkit-scrollbar{
   display: none;
 }
-.margin{
-  margin-bottom: 30px;
-}
 
 .profile-div{
  font-weight: 600;

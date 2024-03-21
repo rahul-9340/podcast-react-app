@@ -101,11 +101,11 @@ else{
   return (
     <div className='custom-audio-player'>
      <img src={image} className='display-image-player'/>
-  
+     
     <audio ref={audioRef} src={audioSrc}/>
  <p className='audio-btn'  onClick={togglePlay}>{ isPlaying?<FaPause/>:<FaPlay/>}</p> 
     <div className='duration-flex'>
-<p>{formateTime(currentTime)}</p>
+<p className='formate-time'>{formateTime(currentTime)}</p>
 <input type="range"
     onChange={handleDuration}
     className='duration-range'
@@ -113,7 +113,7 @@ else{
     value={currentTime}
     step={0.01}
     />
-<p>{formateTime(duration-currentTime)}</p>
+<p className='formate-time'>{formateTime(duration-currentTime)}</p>
 <p className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</p>
 <input type="range"
 value={volume}
