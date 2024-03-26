@@ -128,7 +128,7 @@ else{
  
 
 <p className='curser-pointer' onClick={skipAudioBackward}><FaBackward/></p>
- <div className='duration-flex'>
+ 
 <p>{formateTime(currentTime)}</p>
 <input 
     type="range"
@@ -142,7 +142,7 @@ else{
     />
 
 <p className='formate-time'>{formateTime(duration-currentTime)}</p>
-</div>
+
 <p className='curser-pointer' onClick={skipAudioForward}><FaForward/></p>
 
 
