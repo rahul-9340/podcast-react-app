@@ -4,7 +4,7 @@
     bottom: 0;
     padding: 0.1rem 0rem;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
     background-color:rgb(14, 2, 21,0.5);
@@ -26,7 +26,6 @@
     gap: 10px;
     align-items: center;
 }
-
 
 
 
@@ -99,6 +98,13 @@
 cursor: pointer;
 }
 
+
+
+@media screen and (max-width: 666px) {
+    .custom-audio-player{
+background-color: #e72c30;
+    }
+  }
 
 
 
