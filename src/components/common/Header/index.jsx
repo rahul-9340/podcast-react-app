@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom'
 export default function Header() {
 const location = useLocation()
 const currentPath = location.pathname
-  return (
+  
+return (
     <div className='navbar'>
         <div className='gradient'></div>
 <div className='links'>

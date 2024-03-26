@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import "./style.css"
-import {FaPlay,FaPause,FaVolumeUp,FaVolumeMute, FaVolumeOff} from "react-icons/fa"
+import {FaPlay,FaPause,FaVolumeUp,FaVolumeMute,FaForward,FaBackward} from "react-icons/fa"
 import { useState,useRef } from 'react'
 export default function AudioPlayer({audioSrc,image}) {
   const[isMute,setIsMute] = useState(false)
@@ -14,15 +14,17 @@ export default function AudioPlayer({audioSrc,image}) {
 
 
   const handleDuration = (e)=>{
+    console.log(e.target.value)
     setCurrentTime(parseFloat(e.target.value))
     audioRef.current.currentTime = parseFloat(e.target.value)
-  }
-  
-const handleVolume = (e)=>{
-setVolume(e.target.value)
-audioRef.current.volume = e.target.value
-} 
+     }
+                           
+  const handleVolume = (e)=>{
+  setVolume(e.target.value)
+  audioRef.current.volume = e.target.value
+}             
 
+                           
 
 
 
@@ -68,6 +70,7 @@ else{
 }
 },[isPlaying])
 
+
 useEffect(()=>{
 if(!isMute){
   audioRef.current.volume = 1
@@ -97,23 +100,52 @@ else{
       setIsMute(true)
     }
   }
+
+  const calculateGradient = () => {
+    const value = Math.floor(currentTime/duration*100);
+    console.log(value)
+    return `linear-gradient(to right, #aa2f31 ${value}%, rgb(147, 131, 131) ${value}%)`;
+  };
   
+  const skipAudioForward = (e)=>{
+    audioRef.current.currentTime = audioRef.current.currentTime+10
+  }
+  
+  const skipAudioBackward = ()=>{
+    audioRef.current.currentTime = audioRef.current.currentTime-10
+  } 
+  
+  const volumeGradient = ()=>{
+    return `linear-gradient(to right,  #aa2f31  ${volume*100}%, rgb(147, 131, 131) ${volume}%)`;
+  }
+
+
+
   return (
     <div className='custom-audio-player'>
      <img src={image} className='display-image-player'/>
      
     <audio ref={audioRef} src={audioSrc}/>
  <p className='audio-btn'  onClick={togglePlay}>{ isPlaying?<FaPause/>:<FaPlay/>}</p> 
+<p className='curser-pointer' onClick={skipAudioBackward}><FaBackward/></p>
     <div className='duration-flex'>
-<p className='formate-time'>{formateTime(currentTime)}</p>
-<input type="range"
+<p>{formateTime(currentTime)}</p>
+
+
+<input 
+    type="range"
     onChange={handleDuration}
-    className='duration-range'
-    max={duration}
+    className='custom-range'
     value={currentTime}
     step={0.01}
+    min={0}
+    max={duration}
+    style={{background:calculateGradient()}}
     />
+
+
 <p className='formate-time'>{formateTime(duration-currentTime)}</p>
+<p className='curser-pointer' onClick={skipAudioForward}><FaForward/></p>
 <p className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</p>
 <input type="range"
 value={volume}
@@ -121,7 +153,8 @@ step={0.01}
 max={1}
 min={0}
 onChange={handleVolume}
-className='volume-range'
+className='custom-volume'
+style={{background:volumeGradient()}}
     />
     </div>  
     </div>
