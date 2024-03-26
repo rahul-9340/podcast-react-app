@@ -9,7 +9,6 @@ import Loader from '../components/common/Loader'
 
 export default function Profile() {
 const user = useSelector((state=>state.user.user))
-console.log("MY user",user)
 
   if(!user){
     return <Loader/>

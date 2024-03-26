@@ -26,7 +26,7 @@
 
 .gradient{
 position: absolute;
-width:800px;
+width:100%;
 height:150px;
 margin: auto;
 background:var(--blue);

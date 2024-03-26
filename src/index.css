@@ -10,7 +10,6 @@
 
 
 body{
-  margin: 0px;
   font-family: "Inter",sans-serif;
   background-color: var(--theme);
  color: var(--purple-grey);

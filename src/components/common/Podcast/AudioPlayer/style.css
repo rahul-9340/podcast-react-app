@@ -4,7 +4,7 @@
     bottom: 0;
     padding: 0.1rem 0rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 2rem;
     background-color:rgb(14, 2, 21,0.5);
@@ -22,6 +22,11 @@
 
 }
 
+.flex{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
 .duration-flex{
     display: flex;
@@ -90,5 +95,17 @@
 .curser-pointer{
 cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

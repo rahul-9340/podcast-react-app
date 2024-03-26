@@ -61,7 +61,6 @@ export default function PodcastDetails() {
     };
   }, [id]);
 
-  console.log(podcast);
 
   return (
     <div>

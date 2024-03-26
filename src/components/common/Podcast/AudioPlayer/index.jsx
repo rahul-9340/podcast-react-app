@@ -103,7 +103,6 @@ else{
 
   const calculateGradient = () => {
     const value = Math.floor(currentTime/duration*100);
-    console.log(value)
     return `linear-gradient(to right, #aa2f31 ${value}%, rgb(147, 131, 131) ${value}%)`;
   };
   
@@ -123,15 +122,14 @@ else{
 
   return (
     <div className='custom-audio-player'>
-     <img src={image} className='display-image-player'/>
-     
-    <audio ref={audioRef} src={audioSrc}/>
- <p className='audio-btn'  onClick={togglePlay}>{ isPlaying?<FaPause/>:<FaPlay/>}</p> 
+     <div><img src={image} className='display-image-player'/></div>
+     <audio ref={audioRef} src={audioSrc}/>
+     <p className='audio-btn'  onClick={togglePlay}>{ isPlaying?<FaPause/>:<FaPlay/>}</p> 
+ 
+
 <p className='curser-pointer' onClick={skipAudioBackward}><FaBackward/></p>
-    <div className='duration-flex'>
+ <div className='duration-flex'>
 <p>{formateTime(currentTime)}</p>
-
-
 <input 
     type="range"
     onChange={handleDuration}
@@ -143,10 +141,12 @@ else{
     style={{background:calculateGradient()}}
     />
 
-
 <p className='formate-time'>{formateTime(duration-currentTime)}</p>
+</div>
 <p className='curser-pointer' onClick={skipAudioForward}><FaForward/></p>
-<p className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</p>
+
+
+<div className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</div>
 <input type="range"
 value={volume}
 step={0.01}
@@ -156,8 +156,7 @@ onChange={handleVolume}
 className='custom-volume'
 style={{background:volumeGradient()}}
     />
-    </div>  
-    </div>
+</div>
 
   )
 }
