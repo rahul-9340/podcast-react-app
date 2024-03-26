@@ -14,7 +14,6 @@ export default function AudioPlayer({audioSrc,image}) {
 
 
   const handleDuration = (e)=>{
-    console.log(e.target.value)
     setCurrentTime(parseFloat(e.target.value))
     audioRef.current.currentTime = parseFloat(e.target.value)
      }
@@ -127,7 +126,7 @@ else{
      <p className='audio-btn'  onClick={togglePlay}>{ isPlaying?<FaPause/>:<FaPlay/>}</p> 
  
 
-<p className='curser-pointer' onClick={skipAudioBackward}><FaBackward/></p>
+<p className='curser-pointer hide' onClick={skipAudioBackward}><FaBackward/></p>
  
 <p className='formate-time'>{formateTime(currentTime)}</p>
 <input 
@@ -143,7 +142,7 @@ else{
 
 <p className='formate-time'>{formateTime(duration-currentTime)}</p>
 
-<p className='curser-pointer' onClick={skipAudioForward}><FaForward/></p>
+<p className='curser-pointer hide' onClick={skipAudioForward}><FaForward/></p>
 
 
 <div  className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</div>
