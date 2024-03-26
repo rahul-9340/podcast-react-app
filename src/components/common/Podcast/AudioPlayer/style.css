@@ -94,9 +94,7 @@
 }
 
 
-.curser-pointer{
-cursor: pointer;
-}
+.curser-pointer{cursor: pointer;}
 
 
 /* 
@@ -105,6 +103,20 @@ cursor: pointer;
 background-color: #e72c30;
     }
   } */
+
+.formate-time{
+ width: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-inline: 5px;
+}
+
+
+
+
+
+
 
 
 

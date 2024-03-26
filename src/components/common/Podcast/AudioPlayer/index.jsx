@@ -129,7 +129,7 @@ else{
 
 <p className='curser-pointer' onClick={skipAudioBackward}><FaBackward/></p>
  
-<p>{formateTime(currentTime)}</p>
+<p className='formate-time'>{formateTime(currentTime)}</p>
 <input 
     type="range"
     onChange={handleDuration}
@@ -146,7 +146,7 @@ else{
 <p className='curser-pointer' onClick={skipAudioForward}><FaForward/></p>
 
 
-<div className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</div>
+<div  className='audio-btn'  onClick={toggleMute}>{!isMute?<FaVolumeUp/>:<FaVolumeMute/>}</div>
 <input type="range"
 value={volume}
 step={0.01}
